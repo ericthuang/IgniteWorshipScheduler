@@ -1,7 +1,10 @@
-# Ignite Worship Scheduler
+# Ignite Worship Scheduler (PyCharm Project Directory)
 
 ## Description
 The Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assignments. 
+
+## Libraries Used
+
 
 ## Possible Roles
 * `lead` - Worship Leader
