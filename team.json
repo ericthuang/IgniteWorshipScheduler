@@ -2,7 +2,7 @@
   {
     "name": "Eric Huang",
     "email": "eric@ericthuang.com",
-    "primary": ["lead", "vocals", "acoustic"],
+    "primary": ["lead", "acoustic"],
     "secondary": ["bass", "leadElectric", "rhythmElectric"],
     "unavailableSundays": [
       "2019-07-07",
@@ -30,7 +30,7 @@
     "name": "Jonathan Gauss",
     "email": "jygauss@gmail.com",
     "primary": ["drums"],
-    "secondary": ["leadKeys"],
+    "secondary": ["rhythmKeys"],
     "unavailableSundays": [
       "2019-07-21",
       "2019-07-28",
@@ -66,7 +66,7 @@
   {
     "name": "Victoria Pai",
     "email": "bikkubeeks@gmail.com",
-    "primary": ["lead", "vocals", "acoustic"],
+    "primary": ["lead", "acoustic"],
     "secondary": [],
     "unavailableSundays": [
       "2019-07-07",
@@ -89,7 +89,7 @@
   {
     "name": "Daniel Chan",
     "email": "worshipcrazy30@gmail.com",
-    "primary": ["lead", "vocals", "rhythmKeys"],
+    "primary": ["lead", "rhythmKeys"],
     "secondary": ["leadKeys"],
     "unavailableSundays": []
   },
@@ -118,7 +118,7 @@
   {
     "name": "Esther Tseng",
     "email": "esther@esthertseng.com",
-    "primary": ["lead", "vocals", "rhythmKeys", "acoustic"],
+    "primary": ["lead", "rhythmKeys", "acoustic"],
     "secondary": ["leadKeys", "bass"],
     "unavailableSundays": [
       "2019-07-28"

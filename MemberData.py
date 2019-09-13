@@ -5,10 +5,10 @@ import json
 
 
 class MemberData:
-    def __init__(self, json_path, quarter, year):
+    def __init__(self, role_params, json_path, quarter, year):
         self.memberInfo = dict()  # key: emailstr, value: Member object
         self.availability_matrix = dict()  # date -> role -> primary/secondary -> list of emails
-
+        self.role_params = role_params
         self._from_json(json_path)
         self._set_availability_matrix(quarter, year)
 
@@ -35,10 +35,10 @@ class MemberData:
             sundays_datestrs.append(u.datetime_to_datestring(sunday))
 
         template_dict_of_all_roles = dict()
-        for role in u.ROLES:
-            template_dict_of_all_roles[role] = dict()
-            template_dict_of_all_roles[role]["primary"] = list()
-            template_dict_of_all_roles[role]["secondary"] = list()
+        for role_name in self.role_params.keys():
+            template_dict_of_all_roles[role_name] = dict()
+            template_dict_of_all_roles[role_name]["primary"] = list()
+            template_dict_of_all_roles[role_name]["secondary"] = list()
 
         # initialize
         for i in sundays_datestrs:
@@ -70,7 +70,7 @@ class MemberData:
 
 
 if __name__ == '__main__':
-    x = MemberData("team.json", 3, 2019)
+    x = MemberData(u.get_roles(), "team.json", 3, 2019)
     AM = x.get_availability_matrix()
     # date -> role -> primary/secondary -> list of emails
 

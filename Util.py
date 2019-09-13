@@ -1,12 +1,18 @@
 from datetime import timedelta, datetime
 import datetime as dt
 import calendar as cal
+import json
 
+ROLE_PARAM_JSON = "RoleParameters.json"
 MONTHS_IN_A_QUARTER = 3
 
-ROLES = ["lead", "vocals", "leadKeys", "rhythmKeys", "acoustic",
-         "leadElectric", "rhythmElectric", "bass", "drums", "percussion"]
 
+def get_roles():
+    # get param json
+    with open(ROLE_PARAM_JSON, 'r') as this_file:
+        data = this_file.read()
+
+    return json.loads(data)
 
 def get_quarter_date_bounds(quarter_no, year_no):
     start_month = (quarter_no * MONTHS_IN_A_QUARTER) - (MONTHS_IN_A_QUARTER - 1)
@@ -41,11 +47,12 @@ def datetime_to_datestring(datetime_obj):
     return year + "-" + month + "-" + day
 
 if __name__ == '__main__':
-    for i in get_all_sundays_in_quarter(4, 2019):
-        print(i)
+    # for i in get_all_sundays_in_quarter(4, 2019):
+    #     print(i)
+    #
+    # datetimetest = datestring_to_datetime("2019-05-27")
+    # print(str(datetimetest))
+    #
+    # print(datetime_to_datestring(datetimetest))
 
-
-    datetimetest = datestring_to_datetime("2019-05-27")
-    print(str(datetimetest))
-
-    print(datetime_to_datestring(datetimetest))
+    get_roles()
