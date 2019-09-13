@@ -18,11 +18,8 @@ The Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assig
 * `drums` - Drummer
 * `percussion` - Percussionist (percussion sampling pad, ableton, etc.)
 
-### Possible Lead Rhythm Roles
-`rhythmKeys`, `acoustic`, `rhythmElectric`
-
 ### Map of Possible Combinations
-See `RoleMapping.json`
+See `CriticalParameters.json`
 
 ## IWS Algo
 For N iterations:

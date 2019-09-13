@@ -1,0 +1,100 @@
+[
+  {
+    "Roles":   [
+      {
+        "role": "lead",
+        "possibleCombos": [
+          "rhythmKeys",
+          "acoustic",
+          "rhythmElectric",
+          "bass"
+        ],
+        "maxCountPerTeam": 2,
+        "minCountPerTeam": 1,
+        "notes": "This person leads worship. It is assumed that this person can sing."
+      },
+      {
+        "role": "vocals",
+        "possibleCombos": [
+          "rhythmKeys",
+          "acoustic",
+          "rhythmElectric",
+          "bass"
+        ],
+        "maxCountPerTeam": 5,
+        "minCountPerTeam": 0,
+        "notes": "This person is not a worship leader, but sings. They might lead a song every now and then."
+      },
+      {
+        "role": "leadKeys",
+        "possibleCombos": [],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 0,
+        "notes": "This person does synth, pads, ambient, cool sounds. Kinda like how an lead EG is to rhythm EG. This person can run click track, but rhythm keyboardist can too."
+      },
+      {
+        "role": "rhythmKeys",
+        "possibleCombos": [
+          "lead",
+          "vocals"
+        ],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 1,
+        "notes": "This person plays the rhythm component of keys - piano, electric piano, chords, etc. Runs click track. "
+      },
+      {
+        "role": "acoustic",
+        "possibleCombos": [
+          "lead",
+          "vocals"
+        ],
+        "maxCountPerTeam": 2,
+        "minCountPerTeam": 0,
+        "notes": "Plays guitar."
+      },
+      {
+        "role": "leadElectric",
+        "possibleCombos": [],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 0,
+        "notes": "Plays lead electric guitar lines. Less chord strumming compared to rhythm EG. More 'solo' style stuff."
+      },
+      {
+        "role": "rhythmElectric",
+        "possibleCombos": [
+          "lead",
+          "vocals"
+        ],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 0,
+        "notes": "This person plays chords to rhythmically drive the band. Can play lead lines if lead EG not present, and even if lead EG is present."
+      },
+      {
+        "role": "bass",
+        "possibleCombos": [
+          "lead",
+          "vocals"
+        ],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 1,
+        "notes": "Plays the boom boom boom."
+      },
+      {
+        "role": "drums",
+        "possibleCombos": [],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 1,
+        "notes": "This person lays down sick beats by hitting cymbals and wooden cylinders."
+      },
+      {
+        "role": "percussion",
+        "possibleCombos": [],
+        "maxCountPerTeam": 1,
+        "minCountPerTeam": 0,
+        "notes": "This person plays percussion sample pads, other non-drum set percussion instruments. Kinda like how an lead EG is to rhythm EG."
+      }
+    ]
+  }
+]
+
+
