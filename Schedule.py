@@ -2,9 +2,10 @@ import Band as b
 
 
 class Schedule:
-    def __init__(self, role_params, availability_matrx):
+    def __init__(self, role_params, priority_sequence, availability_matrx):
         # availability_matrix: date -> role -> primary/secondary -> list of emails
         self.availability_matrix = availability_matrx;
+        self.priority_sequence = priority_sequence
         self.role_params = role_params
 
         self.bands = dict() # key: datestr, value: band object
@@ -13,7 +14,7 @@ class Schedule:
     def generate_new_schedule(self):
         self._clear_current_schedule()
         for this_band in self.bands.keys():
-            self.bands[this_band] = b.Band(self.role_params, self.availability_matrix[this_band])
+            self.bands[this_band] = b.Band(self.role_params, self.priority_sequence, self.availability_matrix[this_band])
             self.bands[this_band].generate_band()
         self._score_current_schedule()
 

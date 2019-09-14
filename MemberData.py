@@ -14,9 +14,8 @@ class MemberData:
 
     def _from_json(self, path):
         # import member data
-        data = None
-        with open(path, 'r') as file:
-            data = file.read()
+        with open(path, 'r') as this_file:
+            data = this_file.read()
 
         member_dicts = json.loads(data)
 

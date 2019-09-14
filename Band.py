@@ -1,8 +1,10 @@
 import random as r
+import copy
 
 class Band:
-    def __init__(self, role_params, availability_matrix_date_slice):
+    def __init__(self, role_params, priority_sequence, availability_matrix_date_slice):
         self.availability = availability_matrix_date_slice # role -> primary/secondary -> list of emails
+        self.priority_sequence = priority_sequence
         self.band_members = dict()  # key: role, value: list of members
         self.emails = set()
         self.role_params = role_params
@@ -17,12 +19,12 @@ class Band:
         for cand in candidate_list:
             if cand in self.emails:
                 candidate_list.remove(cand)
-        # other pruning here
+        # other pruning here if needed
 
         return candidate_list
 
     def generate_band(self):
-        for role in self.band_members.keys():
+        for role in self.priority_sequence:
             required_minimum = self.role_params[role]['minCountPerTeam']
 
             # prune candidates list, remove people who are already serving in this set
@@ -96,11 +98,12 @@ class Band:
 
 
 def choose_random_element(candidate_list, none_count = 0):
+    augmented_candidates = copy.deepcopy(candidate_list)
     if none_count:
         for i in range(none_count):
-            candidate_list.append("##NONE##")
+            augmented_candidates.append("##NONE##")
 
-    chosen = r.choice(candidate_list)
+    chosen = r.choice(augmented_candidates)
 
     if chosen == "##NONE##":
         return None

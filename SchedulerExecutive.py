@@ -5,7 +5,8 @@ import os
 import time
 import random as r
 import pprint
-import json, ast
+import json
+import ast
 import copy
 
 OUTPUT_DIR = "output"
@@ -15,8 +16,10 @@ class SchedulerExecutive:
     def __init__(self, quarter, year, iter_count):
         # read in param json
         self.role_params = dict()
-        for role in u.get_roles():
+        role_param_json = u.get_roles()
+        for role in role_param_json:
             self.role_params[role['role']] = role
+        priority_sequence = [x['role'] for x in role_param_json]
 
         # prep member data
         self.member_data = md.MemberData(self.role_params, "team.json", 3, 2019)
@@ -29,7 +32,7 @@ class SchedulerExecutive:
         self.iteration_count = iter_count
         self.top_three = [{'score': 0}, {'score': 0}, {'score': 0}]  # list of dict of schedule of bands
 
-        self.schedule = s.Schedule(self.role_params, self.member_data.get_availability_matrix())
+        self.schedule = s.Schedule(self.role_params, priority_sequence, self.member_data.get_availability_matrix())
 
         # seed rng for reproducibility
         r.seed(1234)
