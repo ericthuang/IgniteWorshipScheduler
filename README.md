@@ -7,7 +7,7 @@ Without considering blackout dates, we have (very) roughly 1.36e+39 possible uni
 
 By default, 10,000,000 random possible schedules are examined, scored, and ranked. 
 
-![](drstrange.gif)
+![](https://thumbs.gfycat.com/BetterThankfulEnglishsetter-max-1mb.gif)
 
 ## Libraries Used
 Nothing besides standard python lib.
