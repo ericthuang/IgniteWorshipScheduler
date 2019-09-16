@@ -5,7 +5,7 @@ Ignite Worship Scheduler (IWS, ver 3) generates an optimal set of weekly band as
 
 Without considering blackout dates, we have (very) roughly 1.36E+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number of possible unique schedules is still astronomically large. 
 
-By default, 10,000,000 random possible schedules are examined, scored, and ranked. 
+By default, 10,000,000 random possible schedules are examined, scored, and ranked. This number can be set to whatever we want. 
 
 ![](https://thumbs.gfycat.com/BetterThankfulEnglishsetter-max-1mb.gif)
 
