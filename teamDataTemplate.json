@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Eric Huang",
+    "email": "eric@ericthuang.com",
+    "primary": ["lead", "acoustic"],
+    "secondary": ["bass", "leadElectric", "rhythmElectric"],
+    "unavailableSundays": [
+      "2019-10-06"
+    ]
+  },
+  {
+    "name": "Eric's Evil Twin",
+    "email": "eric.tailon.huang@gmail.com",
+    "primary": ["vocals", "rhythmKeys"],
+    "secondary": ["leadKeys"],
+    "unavailableSundays": []
+  },
+  {
+    "name": "Eric's Clone",
+    "email": "huang.t.eric@gmail.com",
+    "primary": [
+      "drums"
+    ],
+    "secondary": [
+      "rhythmKeys"
+    ],
+    "unavailableSundays": [
+      "2019-10-13",
+      "2019-12-01",
+      "2019-12-29"
+    ]
+  }
+]
