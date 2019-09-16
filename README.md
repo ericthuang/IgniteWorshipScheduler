@@ -53,6 +53,9 @@ For N iterations:
 
 3. Output top 3 schedules (+ supporting metrics) for human evaluation
 
+Why do it this way? Using rules/logic to generate schedules is friggin hard. Judging stochastically bruteforced results is way easier. Is this the best solution? Probably not. But easiest to implement forsure.
+
+
 ## Future Features/Improvements
 * Integrate into web service for more automation (pull directly from mongo)
 * Optimize by hashing and memoizing already generated schedules so that we dont look at the same one twice
