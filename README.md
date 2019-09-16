@@ -1,4 +1,4 @@
-# Ignite Worship Scheduler (PyCharm Project)
+# Ignite Worship Scheduler
 
 ## Description
 Version 3 of Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assignments. 
@@ -39,17 +39,17 @@ For N iterations:
 * Each band has no more than one of each: 
   * lead keyboardist, rhythm keyboardist, drummer, percussionist, bassist
 
-2. Score set of Sunday bands as follows: 
-* +3 for each sunday band that is complete (contains leader, lead rhythm instrument, bass, keys, drums)
-* +2 if low variability of utilization across all ministry members (goal is for close to uniform utilization)
-* +2 for each pair of consecutive Sundays that do not have carryover members (check with moving window)
-* +2 for each set of 3 consecutive Sundays that do not have carryover members (check with moving window)
-* +2 for each sunday band that has two leads
-* +2 for each sunday band that has a secondary vocalist
-* +2 for each sunday band that has a lead electric guitarist
-* +1 for each sunday band that that has a second keyboardist
-* +1 for each sunday band that has a percussionist
-* +1 for each member that serves in their secondary role at least once per term and no more than 50% of their Sundays
+2. Score set of Sunday bands (starting at 0) as follows: 
+* +5 low utilization mean across all members in schedule
+* +5 low utilization variability (standard deviation) across all members in schedule
+* +3 for every band in schedule that is complete (meets all minimum requirements as defined by `RoleParameters.json`
+* +2 for every band in schedule that has two leaders
+* +2 for every band in schedule that has at least one non-lead vocalist
+* +2 for every band in schedule that has a lead electric guitarist
+* +2 for every band in schedule that has a lead keyboardist
+* +2 for every band in schedule that has a percussionist
+* +10 for each pair of consecutive Sunday bands that don't have carryover members (members serving 2 consecutive weeks)
+* +10 for each set of 3 consecutive Sunday bands that don't have any carryover members
 
 3. Output top 3 schedules (+ supporting metrics) for human evaluation
 
