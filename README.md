@@ -1,10 +1,16 @@
 # Ignite Worship Scheduler (PyCharm Project)
 
 ## Description
-The Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assignments. 
+Version 3 of Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assignments. 
+
+Without considering blackout dates, we have (very) roughly 1.36e+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number of possible unique schedules is still astronomically large. 
+
+By default, 10,000,000 random possible schedules are examined, scored, and ranked. 
+
+![](drstrange.gif)
 
 ## Libraries Used
-
+Nothing besides standard python lib.
 
 ## Possible Roles
 * `lead` - Worship Leader
@@ -17,9 +23,10 @@ The Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assig
 * `bass` - Bassist
 * `drums` - Drummer
 * `percussion` - Percussionist (percussion sampling pad, ableton, etc.)
+See `RoleParameters.json`
 
 ### Map of Possible Combinations
-See `CriticalParameters.json`
+See `RoleParameters.json`
 
 ## IWS Algo
 For N iterations:
@@ -46,9 +53,18 @@ For N iterations:
 
 3. Output top 3 schedules (+ supporting metrics) for human evaluation
 
-
-## Future Features
+## Future Features/Improvements
 * Integrate into web service for more automation (pull directly from mongo)
-* Less bruteforcey algorithm to reduce runtime
+* Optimize by hashing and memoizing already generated schedules so that we dont look at the same one twice
+* Parallelization to save time
+* more 'intelligent' pruning to further reduce number of possibilities, including feedback of previous Sunday band into pruning process
+* An overall different, non-stochastic, non-bruteforcey approach (tried, too hard/complex)
+
+## Changelog (from V2):
+* additive scoring only, no more subtractive scoring
+* pruning possible band candidates instead of purely logical decision making
+* addition of RoleParameters.json to enforce some 'rules'
+* new input json format
+* conformity to PEP 8
 
 
