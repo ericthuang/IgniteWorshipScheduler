@@ -90,9 +90,6 @@ if __name__ == '__main__':
     year_num = 2019
     team = "team2019Q4.json"
     SE = SchedulerExecutive(quarter_num, year_num, team, num_schedule_iterations)
-    # # resume_file_path = ""
-    # # SE.import_top_three_file(resume_file_path)
     SE.run()
-
     SE.print_schedule(0)
 
