@@ -1,9 +1,9 @@
 # Ignite Worship Scheduler
 
 ## Description
-Version 3 of Ignite Worship Scheduler (IWS) generates an optimal set of weekly band assignments. 
+Ignite Worship Scheduler (IWS, ver 3) generates an optimal set of weekly band assignments. 
 
-Without considering blackout dates, we have (very) roughly 1.36e+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number of possible unique schedules is still astronomically large. 
+Without considering blackout dates, we have (very) roughly 1.36E+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number of possible unique schedules is still astronomically large. 
 
 By default, 10,000,000 random possible schedules are examined, scored, and ranked. 
 
