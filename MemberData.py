@@ -40,8 +40,8 @@ class MemberData:
             template_dict_of_all_roles[role_name]["secondary"] = list()
 
         # initialize
-        for i in sundays_datestrs:
-            self.availability_matrix[i] = cp.deepcopy(template_dict_of_all_roles)
+        for date_str in sundays_datestrs:
+            self.availability_matrix[date_str] = cp.deepcopy(template_dict_of_all_roles)
 
         for memEmail in self.memberInfo.keys():
             available_sundays = [x for x in sundays_datestrs
@@ -69,7 +69,7 @@ class MemberData:
 
 
 if __name__ == '__main__':
-    x = MemberData(u.get_roles(), "team.json", 3, 2019)
+    x = MemberData(u.get_roles(), "team2019Q4.json", 3, 2019)
     AM = x.get_availability_matrix()
     # date -> role -> primary/secondary -> list of emails
 

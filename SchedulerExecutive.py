@@ -6,14 +6,13 @@ import time
 import random as r
 import pprint
 import json
-import ast
 import copy
 
 OUTPUT_DIR = "output"
 
 
 class SchedulerExecutive:
-    def __init__(self, quarter, year, iter_count):
+    def __init__(self, quarter, year, team_json, iter_count):
         # read in param json
         self.role_params = dict()
         role_param_json = u.get_roles()
@@ -22,7 +21,7 @@ class SchedulerExecutive:
         priority_sequence = [x['role'] for x in role_param_json]
 
         # prep member data
-        self.member_data = md.MemberData(self.role_params, "team.json", 3, 2019)
+        self.member_data = md.MemberData(self.role_params, team_json, quarter, year)
 
         # get all sundays in this quarter
         self.sundays_datestrs = list()
@@ -32,23 +31,24 @@ class SchedulerExecutive:
         self.iteration_count = iter_count
         self.top_three = [{'score': 0}, {'score': 0}, {'score': 0}]  # list of dict of schedule of bands
 
-        self.schedule = s.Schedule(self.role_params, priority_sequence, self.member_data.get_availability_matrix())
-
-        # seed rng for reproducibility
-        r.seed(1234)
+        self.schedule = s.Schedule(self.role_params, priority_sequence, self.member_data.get_availability_matrix(),
+                                   self.member_data)
 
     def run(self):
+        r.seed(self.member_data.get_member_count() * len(self.role_params))  # this is super arbitrary
         # generate schedules
-        for i in range(self.iteration_count):
-            print("Iteration: " + str(i+1))
-            self.schedule.generate_new_schedule()
-            this_score = self.schedule.get_current_score()
-            insertion_index = self.get_top_three_insertion_index(this_score)
-            if insertion_index != -1:
-                self.update_top_schedules(self.schedule.get_current_schedule_dict(), insertion_index)
-
+        try:
+            for i in range(self.iteration_count):
+                print("Iteration: " + str(i+1) + " - Current Best: " + str([x['score'] for x in self.top_three]))
+                self.schedule.generate_new_schedule()
+                this_score = self.schedule.get_current_score()
+                insertion_index = self.get_top_three_insertion_index(this_score)
+                if insertion_index != -1:
+                    self.update_top_schedules(self.schedule.get_current_schedule_dict(), insertion_index)
+        except:
+            print("FAILED - SAVING RESULTS")
         self.save_top_three_file()
-        self.print_schedule(1)
+        # print(self.top_three[0].get_stats())
 
     def get_top_three_insertion_index(self, score):
         scores = [x['score'] for x in self.top_three]
@@ -65,14 +65,14 @@ class SchedulerExecutive:
 
     def print_schedule(self, num):
         pp = pprint.PrettyPrinter(indent=4)
-        if num < len(self.top_three):
+        if 0 <= num < len(self.top_three):
             the_schedule = copy.deepcopy(self.top_three[num])
             for set_date in the_schedule.keys():
                 if set_date != 'score':
                     for role in self.role_params.keys():
                         if len(the_schedule[set_date][role]) == 0 and self.role_params[role]['minCountPerTeam'] != 0:
-                            the_schedule[set_date][role] = "!!!!!!!!! MISSING !!!!!!!!!"
-            pp.pprint(ast.literal_eval(json.dumps(the_schedule)))
+                            the_schedule[set_date][role] = ["!!!!!!!!! MISSING !!!!!!!!!"]
+            pp.pprint(the_schedule)
 
     def save_top_three_file(self):
         save_str = json.dumps(self.top_three)
@@ -83,19 +83,16 @@ class SchedulerExecutive:
         with open(path, "w") as this_file:
             this_file.write(save_str)
 
-    # def import_top_three_file(self, path):
-    #     # continue from previous run
-    #     pass
-
 
 if __name__ == '__main__':
-    num_schedule_iterations = 100
-    quarter_num = 3
+    num_schedule_iterations = 10000000
+    quarter_num = 4
     year_num = 2019
-    SE = SchedulerExecutive(quarter_num, year_num, num_schedule_iterations)
+    team = "team2019Q4.json"
+    SE = SchedulerExecutive(quarter_num, year_num, team, num_schedule_iterations)
     # # resume_file_path = ""
     # # SE.import_top_three_file(resume_file_path)
     SE.run()
 
-    SE.print_schedule(3)
+    SE.print_schedule(0)
 

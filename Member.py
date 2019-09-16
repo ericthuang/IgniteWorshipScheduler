@@ -1,6 +1,7 @@
 from datetime import datetime
 import Util as u
 
+
 class Member:
     def __init__(self, name, primary_roles, secondary_roles, blackout_dates):
         self.name = str(name)

@@ -7,9 +7,20 @@
       "rhythmElectric",
       "bass"
     ],
-    "maxCountPerTeam": 2,
+    "maxCountPerTeam": 1,
     "minCountPerTeam": 1,
     "notes": "This person leads worship. It is assumed that this person can sing."
+  },{
+    "role": "vocals",
+    "possibleCombos": [
+      "rhythmKeys",
+      "acoustic",
+      "rhythmElectric",
+      "bass"
+    ],
+    "maxCountPerTeam": 5,
+    "minCountPerTeam": 0,
+    "notes": "This person is not a worship leader, but sings. They might lead a song every now and then."
   },
   {
     "role": "drums",
@@ -41,7 +52,7 @@
     "possibleCombos": [
       "vocals"
     ],
-    "maxCountPerTeam": 2,
+    "maxCountPerTeam": 1,
     "minCountPerTeam": 0,
     "notes": "Plays guitar."
   },
@@ -75,17 +86,5 @@
     "maxCountPerTeam": 1,
     "minCountPerTeam": 0,
     "notes": "This person plays percussion sample pads, other non-drum set percussion instruments. Kinda like how an lead EG is to rhythm EG."
-  },
-  {
-    "role": "vocals",
-    "possibleCombos": [
-      "rhythmKeys",
-      "acoustic",
-      "rhythmElectric",
-      "bass"
-    ],
-    "maxCountPerTeam": 5,
-    "minCountPerTeam": 0,
-    "notes": "This person is not a worship leader, but sings. They might lead a song every now and then."
   }
 ]
