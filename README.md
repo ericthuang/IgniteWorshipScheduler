@@ -3,14 +3,14 @@
 ## Description
 Ignite Worship Scheduler (IWS, ver 3) generates an optimal set of weekly band assignments. 
 
-Without considering blackout dates, we have (very) roughly 1.36E+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number of possible unique schedules is still astronomically large. 
+Without considering blackout dates, there are more than 1.36E+39 possible unique schedules for a given quarter. If we consider blackout dates, the number is reduced significantly, but the number is still astronomically large. 
 
-By default, 10,000,000 random possible schedules are examined, scored, and ranked. This number can be set to whatever we want. 
+By default, n=10,000,000 random possible schedules are examined, scored, and ranked. This higher this number is set, the more options are explored and the higher the probability of producing the most optimal schedule. 
 
 ![](https://thumbs.gfycat.com/BetterThankfulEnglishsetter-max-1mb.gif)
 
 ## Libraries Used
-Nothing besides standard python lib.
+Nothing besides standard Python lib.
 
 ## Possible Roles
 * `lead` - Worship Leader
@@ -23,6 +23,7 @@ Nothing besides standard python lib.
 * `bass` - Bassist
 * `drums` - Drummer
 * `percussion` - Percussionist (percussion sampling pad, ableton, etc.)
+
 See `RoleParameters.json`
 
 ### Map of Possible Combinations
@@ -33,11 +34,7 @@ For N iterations:
 1. Semi-randomly generate a schedule of X Sunday bands that adheres to the following conditions:
 * Members are not assigned if date is blacked out
 * Members are assigned to serve only within their primary or secondary role(s)
-* Each band must have one lead (vocalist)
-* Each band has no more than 2 leads (vocalist)
-* Each band must have one lead rhythm instrument (see 'Possible Lead Rhythm Roles')
-* Each band has no more than one of each: 
-  * lead keyboardist, rhythm keyboardist, drummer, percussionist, bassist
+* Each band and role is filled according to constraints defined in `RoleParameters.json`
 
 2. Score set of Sunday bands (starting at 0) as follows: 
 * +5 low utilization mean across all members in schedule
@@ -60,7 +57,7 @@ Why do it this way? Using rules/logic to generate schedules is friggin hard. Jud
 * Integrate into web service for more automation (pull directly from mongo)
 * Optimize by hashing and memoizing already generated schedules so that we dont look at the same one twice
 * Parallelization to save time
-* more 'intelligent' pruning to further reduce number of possibilities, including feedback of previous Sunday band into pruning process
+* More 'intelligent' pruning to further reduce number of possibilities, including feedback of previous Sunday band into pruning process
 * An overall different, non-stochastic, non-bruteforcey approach (tried, too hard/complex)
 
 ## Changelog (from V2):
