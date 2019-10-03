@@ -54,11 +54,13 @@ Why do it this way? Using rules/logic to generate schedules is friggin hard. Jud
 
 
 ## Future Features/Improvements
+* Add feature to exclude a set of Sundays (e.g. retreat Sundays, combined service Sundays)
 * Integrate into web service for more automation (pull directly from mongo)
 * Optimize by hashing and memoizing already generated schedules so that we dont look at the same one twice
 * Parallelization to save time
 * More 'intelligent' pruning to further reduce number of possibilities, including feedback of previous Sunday band into pruning process
 * An overall different, non-stochastic, non-bruteforcey approach (tried, too hard/complex)
+
 
 ## Changelog (from V2):
 * additive scoring only, no more subtractive scoring
